@@ -889,20 +889,20 @@
               <span class="status-badge live">Live</span>
             </div>
             <h3>Echonym</h3>
-            <p class="project-tagline">Anonymous social media — no names, no followers, just voices and ideas.</p>
+            <p class="project-tagline">A highly secure, offline-first anonymous social platform engineered for massive scale.</p>
             <p class="project-desc">
-              My first full-stack app, built over 7 months. A social platform where every post
-              is anonymous by design — no DMs, no reposts, no follower counts — built around
-              real-time voice with audio filters instead of a typical text/photo feed.
+              A comprehensive full-stack application prioritizing zero-latency UX and extreme performance. The frontend utilizes a robust 3-tier architecture (Riverpod &rarr; SQLite &rarr; Firestore), guaranteeing instantaneous startup via silent background FCM syncing and aggressive media caching. The Node.js/TypeScript backend employs an event-driven architecture with zero client-side database writes, enforcing all mutations through secure, transactional Cloud Functions.
             </p>
             <ul class="highlights">
-              <li>Real-time voice recording with live audio filters — robot, helium, deep, echo</li>
-              <li>Dual-mode Explore page: worldwide trending by engagement, and nearby by location</li>
-              <li>Architected solo end to end — Firebase Auth, Firestore, Storage, FCM</li>
+              <li><strong>Performance & Scalability:</strong> Eliminated N+1 Firestore queries via batched Riverpod providers. Implemented custom LRU memory/disk media caching and Optimistic UI.</li>
+              <li><strong>Security & Moderation:</strong> Hardened infrastructure using AppCheck (Play Integrity), SHA-256 device fingerprinting, and automated Hive AI moderation pipelines for all uploads.</li>
+              <li><strong>Audio DSP & Custom UI:</strong> Real-time voice anonymization using complex FFmpeg filter chains and 60fps mathematically generated waveform CustomPainters.</li>
+              <li><strong>Backend Architecture:</strong> Event-driven Node.js backend using Firestore triggers for async data aggregation and hourly cron jobs for logarithmic trending decay.</li>
+              <li><strong>Advanced Discovery:</strong> Custom geospatial bounding-box search, Algolia semantic search, and a multi-variable logarithmic group popularity ranking algorithm.</li>
             </ul>
             <div class="chips">
-              <span class="chip">Flutter</span><span class="chip">Firebase</span>
-              <span class="chip">Real-time Audio</span><span class="chip">Geolocation</span>
+              <span class="chip">Flutter</span><span class="chip">Node.js</span><span class="chip">Firebase</span><span class="chip">Cloud Functions</span>
+              <span class="chip">Riverpod</span><span class="chip">SQLite</span><span class="chip">FFmpeg DSP</span><span class="chip">Algolia</span>
             </div>
             <div class="shots">
               <div class="phone">
