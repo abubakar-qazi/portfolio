@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Abubakar Qazi — Independent Flutter &amp; Firebase Developer</title>
-<meta name="description" content="Abubakar Qazi builds full mobile products solo — Echonym, Genspire, Ravl, and three more. Flutter, Firebase, real-time systems, AI integration." />
 
-<!--
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abubakar Qazi — Independent Flutter &amp; Firebase Developer</title>
+  <meta name="description"
+    content="Abubakar Qazi builds full mobile products solo — Echonym, Genspire, Ravl, and three more. Flutter, Firebase, real-time systems, AI integration." />
+
+  <!--
   ============================================================
   HOW TO ADD YOUR OWN IMAGES (read this before hosting)
   ============================================================
   This file looks for screenshots at:
-    assets/screenshots/echonym-1.jpg  (and -2, -3, -4)
-    assets/screenshots/genspire-1.jpg (and -2, -3, -4)
-    assets/screenshots/ravl-1.jpg     (and -2, -3, -4)
-    assets/screenshots/solo-inspector-1.jpg (and -2, -3)
-    assets/screenshots/voice-khata-1.jpg    (and -2, -3)
-    assets/screenshots/horolux-1.jpg        (and -2, -3)
+    assets/screenshots/echonym-1.png  (and -2, -3, -4)
+    assets/screenshots/genspire-1.png (and -2, -3, -4)
+    assets/screenshots/ravl-1.png     (and -2, -3, -4)
+    assets/screenshots/solo-inspector-1.png (and -2, -3)
+    assets/screenshots/voice-khata-1.png    (and -2, -3)
+    assets/screenshots/horolux-1.png        (and -2, -3)
 
   Just create an /assets/screenshots/ folder next to this file and
   drop in images using those exact names — the placeholders will
@@ -29,668 +31,1419 @@
   ============================================================
 -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
-<style>
-  :root{
-    --bg: #0B0E13;
-    --surface: #11161F;
-    --surface-2: #161D29;
-    --line: #232C3A;
-    --text: #ECEFF3;
-    --text-muted: #8B97A8;
-    --text-dim: #5C6B7E;
-    --gold: #E8A23D;
-    --gold-dim: rgba(232,162,61,0.12);
-    --blue: #4C8DFF;
-    --blue-dim: rgba(76,141,255,0.12);
-    --green: #4ADE80;
-    --green-dim: rgba(74,222,128,0.12);
-    --slate: #8B97A8;
-    --slate-dim: rgba(139,151,168,0.12);
-    --radius: 14px;
-    --maxw: 1080px;
-  }
-
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  ::selection{background:var(--gold-dim); color:var(--gold);}
-  a{color:inherit; text-decoration:none;}
-  img{max-width:100%; display:block;}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
-  .mono{font-family:'JetBrains Mono',monospace;}
-  h1,h2,h3{font-family:'Space Grotesk',sans-serif; letter-spacing:-0.01em;}
-  :focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:4px;}
-
-  @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
-  }
-
-  /* ---------- NAV ---------- */
-  nav{
-    position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(11,14,19,0.82); backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{
-    max-width:var(--maxw); margin:0 auto; padding:16px 28px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .logo{
-    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px;
-    display:flex; align-items:center; gap:8px;
-  }
-  .logo .dot{width:7px; height:7px; border-radius:50%; background:var(--gold);}
-  .nav-links{display:flex; gap:32px; align-items:center;}
-  .nav-links a{
-    font-size:14px; color:var(--text-muted); font-weight:500;
-    transition:color 0.2s;
-  }
-  .nav-links a:hover{color:var(--text);}
-  .nav-cta{
-    border:1px solid var(--line); padding:8px 16px; border-radius:8px;
-    font-size:13px !important; color:var(--text) !important;
-    transition:border-color 0.2s, background 0.2s;
-  }
-  .nav-cta:hover{border-color:var(--gold); background:var(--gold-dim);}
-  .nav-toggle{display:none; flex-direction:column; gap:4px; background:none; border:none; cursor:pointer; padding:6px;}
-  .nav-toggle span{width:22px; height:2px; background:var(--text);}
-  .mobile-menu{display:none;}
-
-  @media (max-width:760px){
-    .nav-links{
-      position:fixed; top:64px; left:0; right:0; bottom:0;
-      background:var(--bg); flex-direction:column; align-items:flex-start;
-      padding:32px 28px; gap:24px; transform:translateX(100%);
-      transition:transform 0.25s ease; border-top:1px solid var(--line);
+  <style>
+    :root {
+      --bg: #0B0E13;
+      --surface: #11161F;
+      --surface-2: #161D29;
+      --line: #232C3A;
+      --text: #ECEFF3;
+      --text-muted: #8B97A8;
+      --text-dim: #5C6B7E;
+      --gold: #E8A23D;
+      --gold-dim: rgba(232, 162, 61, 0.12);
+      --blue: #4C8DFF;
+      --blue-dim: rgba(76, 141, 255, 0.12);
+      --green: #4ADE80;
+      --green-dim: rgba(74, 222, 128, 0.12);
+      --slate: #8B97A8;
+      --slate-dim: rgba(139, 151, 168, 0.12);
+      --radius: 14px;
+      --maxw: 1080px;
     }
-    .nav-links.open{transform:translateX(0);}
-    .nav-links a{font-size:18px;}
-    .nav-toggle{display:flex;}
-  }
 
-  /* ---------- HERO ---------- */
-  .hero{
-    padding:168px 0 96px;
-    position:relative;
-    border-bottom:1px solid var(--line);
-  }
-  .hero-eyebrow{
-    color:var(--gold); font-size:13px; font-weight:500; letter-spacing:0.02em;
-    display:flex; align-items:center; gap:10px; margin-bottom:24px;
-  }
-  .cursor{
-    display:inline-block; width:8px; height:16px; background:var(--gold);
-    animation:blink 1s steps(1) infinite;
-  }
-  @keyframes blink{50%{opacity:0;}}
-  .hero h1{
-    font-size:clamp(38px, 6vw, 64px); font-weight:700; line-height:1.08;
-    margin-bottom:20px; max-width:780px;
-  }
-  .hero h1 span{color:var(--gold);}
-  .hero p.lead{
-    font-size:18px; color:var(--text-muted); max-width:560px; margin-bottom:36px;
-  }
-  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:56px;}
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    padding:13px 22px; border-radius:9px; font-size:14.5px; font-weight:600;
-    transition:transform 0.15s, opacity 0.15s; cursor:pointer; border:none;
-  }
-  .btn:hover{transform:translateY(-1px);}
-  .btn-primary{background:var(--gold); color:#1A1306;}
-  .btn-primary:hover{opacity:0.92;}
-  .btn-ghost{background:var(--surface); color:var(--text); border:1px solid var(--line);}
-  .btn-ghost:hover{border-color:var(--text-dim);}
-  .btn-sm{padding:9px 16px; font-size:13px; border-radius:7px;}
-  .btn[disabled]{opacity:0.4; cursor:not-allowed; transform:none !important;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .stat-row{display:flex; gap:40px; flex-wrap:wrap;}
-  .stat{display:flex; flex-direction:column; gap:4px;}
-  .stat .num{font-family:'Space Grotesk',sans-serif; font-size:26px; font-weight:700; color:var(--text);}
-  .stat .label{font-size:12.5px; color:var(--text-dim); font-family:'JetBrains Mono',monospace;}
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* ---------- MANIFESTO ---------- */
-  .manifesto{padding:80px 0; border-bottom:1px solid var(--line);}
-  .manifesto-grid{display:grid; grid-template-columns:140px 1fr; gap:48px;}
-  .manifesto-label{
-    font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--text-dim);
-    text-transform:uppercase; letter-spacing:0.05em;
-  }
-  .manifesto blockquote{
-    font-size:24px; line-height:1.5; font-weight:500; color:var(--text);
-    border-left:2px solid var(--gold); padding-left:24px; max-width:680px;
-  }
-  .manifesto blockquote span{color:var(--text-muted); font-weight:400;}
-  @media (max-width:700px){
-    .manifesto-grid{grid-template-columns:1fr; gap:16px;}
-    .manifesto blockquote{font-size:19px;}
-  }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* ---------- SECTION HEADERS ---------- */
-  .section-head{padding-top:88px; margin-bottom:48px;}
-  .section-head .tag{
-    font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--gold);
-    margin-bottom:10px; display:block;
-  }
-  .section-head h2{font-size:clamp(26px,4vw,36px); font-weight:700;}
-  .section-head p{color:var(--text-muted); margin-top:10px; max-width:520px;}
+    ::selection {
+      background: var(--gold-dim);
+      color: var(--gold);
+    }
 
-  /* ---------- PROJECTS / BUILD LOG ---------- */
-  .build-log{position:relative; padding-bottom:40px;}
-  .timeline-line{
-    position:absolute; left:15px; top:8px; bottom:8px; width:1px;
-    background:linear-gradient(to bottom, var(--line), var(--line) 92%, transparent);
-  }
-  @media (max-width:700px){ .timeline-line{display:none;} }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  .project{
-    position:relative; padding-left:48px; margin-bottom:64px;
-  }
-  .project.reveal{opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease;}
-  .project.reveal.in-view{opacity:1; transform:translateY(0);}
-  @media (max-width:700px){ .project{padding-left:0;} }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-  .node{
-    position:absolute; left:6px; top:6px; width:19px; height:19px; border-radius:50%;
-    border:3px solid var(--bg); box-shadow:0 0 0 1px var(--line);
-  }
-  @media (max-width:700px){ .node{display:none;} }
-  .node.live{background:var(--green);}
-  .node.beta{background:var(--gold);}
-  .node.dev{background:var(--slate);}
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
 
-  .project-card{
-    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-    padding:32px; transition:border-color 0.2s, transform 0.2s;
-  }
-  .project-card:hover{border-color:#2C3645;}
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
 
-  .project-meta{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:14px;}
-  .version-tag{
-    font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--text-dim);
-  }
-  .status-badge{
-    font-family:'JetBrains Mono',monospace; font-size:11.5px; font-weight:600;
-    padding:4px 10px; border-radius:20px; letter-spacing:0.03em; text-transform:uppercase;
-  }
-  .status-badge.live{background:var(--green-dim); color:var(--green);}
-  .status-badge.beta{background:var(--gold-dim); color:var(--gold);}
-  .status-badge.dev{background:var(--slate-dim); color:var(--slate);}
+    h1,
+    h2,
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.01em;
+    }
 
-  .project-card h3{font-size:24px; margin-bottom:6px;}
-  .project-tagline{color:var(--text-muted); font-size:14.5px; margin-bottom:18px;}
-  .project-desc{color:var(--text-muted); font-size:15px; max-width:640px; margin-bottom:20px;}
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
 
-  .highlights{list-style:none; margin-bottom:22px; display:flex; flex-direction:column; gap:9px;}
-  .highlights li{
-    display:flex; gap:10px; font-size:14.5px; color:var(--text);
-  }
-  .highlights li::before{
-    content:'›'; color:var(--gold); font-weight:700; flex-shrink:0;
-  }
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
 
-  .chips{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px;}
-  .chip{
-    font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-muted);
-    background:var(--surface-2); border:1px solid var(--line);
-    padding:5px 10px; border-radius:6px;
-  }
+    /* ---------- NAV ---------- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(11, 14, 19, 0.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
 
-  /* screenshot placeholders */
-  .shots{display:flex; gap:14px; overflow-x:auto; padding-bottom:8px; margin-bottom:24px;}
-  .shots::-webkit-scrollbar{height:6px;}
-  .shots::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px;}
-  .phone{
-    flex:0 0 auto; width:120px; height:240px; border-radius:18px;
-    border:2px solid var(--line); background:var(--surface-2);
-    position:relative; overflow:hidden;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .phone img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
-  .phone .placeholder{
-    text-align:center; padding:10px; color:var(--text-dim);
-  }
-  .phone .placeholder .icon{font-size:18px; margin-bottom:6px; opacity:0.6;}
-  .phone .placeholder .fname{font-family:'JetBrains Mono',monospace; font-size:9px; word-break:break-all; opacity:0.8;}
-  .phone .notch{
-    position:absolute; top:6px; left:50%; transform:translateX(-50%);
-    width:36px; height:5px; border-radius:4px; background:var(--line); z-index:2;
-  }
+    .nav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  .project-actions{display:flex; gap:12px; flex-wrap:wrap;}
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-  /* ---------- SKILLS ---------- */
-  .skills-section{border-top:1px solid var(--line); padding-bottom:20px;}
-  .skills-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:22px;}
-  @media (max-width:700px){ .skills-grid{grid-template-columns:1fr;} }
-  .skill-group{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:22px;}
-  .skill-group .gname{
-    font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--gold);
-    text-transform:uppercase; letter-spacing:0.04em; margin-bottom:12px; display:block;
-  }
-  .skill-tags{display:flex; flex-wrap:wrap; gap:8px;}
-  .skill-tags span{
-    font-size:13.5px; background:var(--surface-2); border:1px solid var(--line);
-    padding:6px 12px; border-radius:7px; color:var(--text);
-  }
+    .logo .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
 
-  /* ---------- CONTACT ---------- */
-  .contact-section{border-top:1px solid var(--line); padding:88px 0 64px; text-align:left;}
-  .contact-section h2{font-size:clamp(28px,5vw,42px); margin-bottom:16px; max-width:560px;}
-  .contact-section p{color:var(--text-muted); max-width:480px; margin-bottom:32px; font-size:16px;}
-  .contact-links{display:flex; gap:14px; flex-wrap:wrap;}
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
 
-  footer{
-    border-top:1px solid var(--line); padding:28px 0; 
-  }
-  .footer-inner{
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
-  }
-  footer p{font-size:13px; color:var(--text-dim); font-family:'JetBrains Mono',monospace;}
-  footer .socials{display:flex; gap:18px;}
-  footer .socials a{font-size:13px; color:var(--text-muted); transition:color 0.2s;}
-  footer .socials a:hover{color:var(--gold);}
-</style>
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      border: 1px solid var(--line);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px !important;
+      color: var(--text) !important;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .nav-cta:hover {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .nav-toggle span {
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    @media (max-width:760px) {
+      .nav-links {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px 28px;
+        gap: 24px;
+        transform: translateX(100%);
+        transition: transform 0.25s ease;
+        border-top: 1px solid var(--line);
+      }
+
+      .nav-links.open {
+        transform: translateX(0);
+      }
+
+      .nav-links a {
+        font-size: 18px;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      padding: 168px 0 96px;
+      position: relative;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-eyebrow {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: var(--gold);
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 20px;
+      max-width: 780px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p.lead {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 22px;
+      border-radius: 9px;
+      font-size: 14.5px;
+      font-weight: 600;
+      transition: transform 0.15s, opacity 0.15s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #1A1306;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+    }
+
+    .btn-ghost {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--text-dim);
+    }
+
+    .btn-sm {
+      padding: 9px 16px;
+      font-size: 13px;
+      border-radius: 7px;
+    }
+
+    .btn[disabled] {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat .num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .stat .label {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ---------- MANIFESTO ---------- */
+    .manifesto {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 48px;
+    }
+
+    .manifesto-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .manifesto blockquote {
+      font-size: 24px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--text);
+      border-left: 2px solid var(--gold);
+      padding-left: 24px;
+      max-width: 680px;
+    }
+
+    .manifesto blockquote span {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    @media (max-width:700px) {
+      .manifesto-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .manifesto blockquote {
+        font-size: 19px;
+      }
+    }
+
+    /* ---------- SECTION HEADERS ---------- */
+    .section-head {
+      padding-top: 88px;
+      margin-bottom: 48px;
+    }
+
+    .section-head .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-head h2 {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 700;
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      margin-top: 10px;
+      max-width: 520px;
+    }
+
+    /* ---------- PROJECTS / BUILD LOG ---------- */
+    .build-log {
+      position: relative;
+      padding-bottom: 40px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 15px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--line), var(--line) 92%, transparent);
+    }
+
+    @media (max-width:700px) {
+      .timeline-line {
+        display: none;
+      }
+    }
+
+    .project {
+      position: relative;
+      padding-left: 48px;
+      margin-bottom: 64px;
+    }
+
+    .project.reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .project.reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width:700px) {
+      .project {
+        padding-left: 0;
+      }
+    }
+
+    .node {
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--line);
+    }
+
+    @media (max-width:700px) {
+      .node {
+        display: none;
+      }
+    }
+
+    .node.live {
+      background: var(--green);
+    }
+
+    .node.beta {
+      background: var(--gold);
+    }
+
+    .node.dev {
+      background: var(--slate);
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: #2C3645;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .version-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      color: var(--text-dim);
+    }
+
+    .status-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .status-badge.live {
+      background: var(--green-dim);
+      color: var(--green);
+    }
+
+    .status-badge.beta {
+      background: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    .status-badge.dev {
+      background: var(--slate-dim);
+      color: var(--slate);
+    }
+
+    .project-card h3 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .project-tagline {
+      color: var(--text-muted);
+      font-size: 14.5px;
+      margin-bottom: 18px;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 640px;
+      margin-bottom: 20px;
+    }
+
+    .highlights {
+      list-style: none;
+      margin-bottom: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .highlights li {
+      display: flex;
+      gap: 10px;
+      font-size: 14.5px;
+      color: var(--text);
+    }
+
+    .highlights li::before {
+      content: '›';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+
+    /* screenshot placeholders */
+    .shots {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+    }
+
+    .shots::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .shots::-webkit-scrollbar-thumb {
+      background: var(--line);
+      border-radius: 4px;
+    }
+
+    .phone {
+      flex: 0 0 auto;
+      width: 120px;
+      height: 240px;
+      border-radius: 18px;
+      border: 2px solid var(--line);
+      background: var(--surface-2);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .phone .placeholder {
+      text-align: center;
+      padding: 10px;
+      color: var(--text-dim);
+    }
+
+    .phone .placeholder .icon {
+      font-size: 18px;
+      margin-bottom: 6px;
+      opacity: 0.6;
+    }
+
+    .phone .placeholder .fname {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      word-break: break-all;
+      opacity: 0.8;
+    }
+
+    .phone .notch {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 5px;
+      border-radius: 4px;
+      background: var(--line);
+      z-index: 2;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ---------- SKILLS ---------- */
+    .skills-section {
+      border-top: 1px solid var(--line);
+      padding-bottom: 20px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    @media (max-width:700px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .skill-group .gname {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tags span {
+      font-size: 13.5px;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      padding: 6px 12px;
+      border-radius: 7px;
+      color: var(--text);
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact-section {
+      border-top: 1px solid var(--line);
+      padding: 88px 0 64px;
+      text-align: left;
+    }
+
+    .contact-section h2 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 16px;
+      max-width: 560px;
+    }
+
+    .contact-section p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 32px;
+      font-size: 16px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    footer .socials {
+      display: flex;
+      gap: 18px;
+    }
+
+    footer .socials a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    footer .socials a:hover {
+      color: var(--gold);
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="#top" class="logo"><span class="dot"></span>abubakar.qazi</a>
-    <button class="nav-toggle" aria-label="Toggle menu" id="navToggle">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-links" id="navLinks">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact" class="nav-cta">Contact</a>
+  <nav>
+    <div class="nav-inner">
+      <a href="#top" class="logo"><span class="dot"></span>abubakar.qazi</a>
+      <button class="nav-toggle" aria-label="Toggle menu" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- ================= HERO ================= -->
-<header class="hero" id="top">
-  <div class="wrap">
-    <div class="hero-eyebrow mono">$ whoami<span class="cursor"></span></div>
-    <h1>Abubakar Qazi builds<br>full products <span>alone</span>.</h1>
-    <p class="lead">
-      Independent Flutter &amp; Firebase developer. I design, build, and ship
-      complete mobile apps end to end — no co-founder, no team, no budget.
-      Six products. Real-time systems, AI integration, offline-first architecture.
-    </p>
-    <div class="hero-actions">
-      <a href="#work" class="btn btn-primary">View the build log →</a>
-      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+  <!-- ================= HERO ================= -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-eyebrow mono">$ whoami<span class="cursor"></span></div>
+      <h1>Abubakar Qazi builds<br>full products <span>alone</span>.</h1>
+      <p class="lead">
+        Independent Flutter &amp; Firebase developer. I design, build, and ship
+        complete mobile apps end to end — no co-founder, no team, no budget.
+        Six products. Real-time systems, AI integration, offline-first architecture.
+      </p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">View the build log →</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><span class="num">06</span><span class="label">PRODUCTS SHIPPED</span></div>
+        <div class="stat"><span class="num">3+</span><span class="label">YEARS INDEPENDENT</span></div>
+        <div class="stat"><span class="num">02</span><span class="label">LIVE ON PLAY STORE</span></div>
+        <div class="stat"><span class="num">01</span><span class="label">PERSON, EVERY LAYER</span></div>
+      </div>
     </div>
-    <div class="stat-row">
-      <div class="stat"><span class="num">06</span><span class="label">PRODUCTS SHIPPED</span></div>
-      <div class="stat"><span class="num">3+</span><span class="label">YEARS INDEPENDENT</span></div>
-      <div class="stat"><span class="num">02</span><span class="label">LIVE ON PLAY STORE</span></div>
-      <div class="stat"><span class="num">01</span><span class="label">PERSON, EVERY LAYER</span></div>
+  </header>
+
+  <!-- ================= MANIFESTO ================= -->
+  <section class="manifesto" id="about">
+    <div class="wrap">
+      <div class="manifesto-grid">
+        <span class="manifesto-label">// about</span>
+        <blockquote>
+          I look for ideas that haven&#x2019;t quite been done before, and build them from scratch &#x2014;
+          UI, backend, infrastructure, deployment, all of it.
+          <span>I&#x2019;m a final-year IT student in Islamabad, and everything here was designed,
+            coded, and shipped solo. The code has never been the hard part &#x2014; getting something
+            real into people&#x2019;s hands is. This page is the proof of work.</span>
+        </blockquote>
+      </div>
     </div>
-  </div>
-</header>
+  </section>
 
-<!-- ================= MANIFESTO ================= -->
-<section class="manifesto" id="about">
-  <div class="wrap">
-    <div class="manifesto-grid">
-      <span class="manifesto-label">// about</span>
-      <blockquote>
-        I look for ideas that haven&#x2019;t quite been done before, and build them from scratch &#x2014;
-        UI, backend, infrastructure, deployment, all of it.
-        <span>I&#x2019;m a final-year IT student in Islamabad, and everything here was designed,
-        coded, and shipped solo. The code has never been the hard part &#x2014; getting something
-        real into people&#x2019;s hands is. This page is the proof of work.</span>
-      </blockquote>
-    </div>
-  </div>
-</section>
+  <!-- ================= PROJECTS ================= -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag mono">// build log</span>
+        <h2>Six products, in order shipped.</h2>
+        <p>Every line below was designed, built, and deployed independently — architecture,
+          backend, and UI included.</p>
+      </div>
 
-<!-- ================= PROJECTS ================= -->
-<section id="work">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag mono">// build log</span>
-      <h2>Six products, in order shipped.</h2>
-      <p>Every line below was designed, built, and deployed independently — architecture,
-      backend, and UI included.</p>
-    </div>
+      <div class="build-log">
+        <div class="timeline-line"></div>
 
-    <div class="build-log">
-      <div class="timeline-line"></div>
-
-      <!-- ECHONYM -->
-      <div class="project">
-        <span class="node live"></span>
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="version-tag mono">v1.0 · Feb 2023</span>
-            <span class="status-badge live">Live</span>
+        <!-- ECHONYM -->
+        <div class="project">
+          <span class="node live"></span>
+          <div class="project-card">
+            <div class="project-meta">
+              <span class="version-tag mono">v1.0 · Feb 2023</span>
+              <span class="status-badge live">Live</span>
+            </div>
+            <h3>Echonym</h3>
+            <p class="project-tagline">Anonymous social media — no names, no followers, just voices and ideas.</p>
+            <p class="project-desc">
+              My first full-stack app, built over 7 months. A social platform where every post
+              is anonymous by design — no DMs, no reposts, no follower counts — built around
+              real-time voice with audio filters instead of a typical text/photo feed.
+            </p>
+            <ul class="highlights">
+              <li>Real-time voice recording with live audio filters — robot, helium, deep, echo</li>
+              <li>Dual-mode Explore page: worldwide trending by engagement, and nearby by location</li>
+              <li>Architected solo end to end — Firebase Auth, Firestore, Storage, FCM</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">Flutter</span><span class="chip">Firebase</span>
+              <span class="chip">Real-time Audio</span><span class="chip">Geolocation</span>
+            </div>
+            <div class="shots">
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-1.png" alt="Echonym home feed"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-1.png<br>Home Feed</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-2.png" alt="Echonym explore page"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-2.png<br>Explore</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-3.png" alt="Echonym voice post creation"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-3.png<br>Voice Post</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-4.png" alt="Echonym groups"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-4.png<br>Groups</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-5.png" alt="Echonym groups"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-5.png<br>Groups</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-6.png" alt="Echonym groups"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-6.png<br>Groups</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-7.png" alt="Echonym groups"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-7.png<br>Groups</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-8.png" alt="Echonym groups"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-8.png<br>Groups</div>
+                </div>
+              </div>
+            </div>
+            <div class="project-actions">
+              <a href="REPLACE_ME_ECHONYM_PLAY_STORE_URL" class="btn btn-primary btn-sm">Get it on Google Play</a>
+            </div>
           </div>
-          <h3>Echonym</h3>
-          <p class="project-tagline">Anonymous social media — no names, no followers, just voices and ideas.</p>
-          <p class="project-desc">
-            My first full-stack app, built over 7 months. A social platform where every post
-            is anonymous by design — no DMs, no reposts, no follower counts — built around
-            real-time voice with audio filters instead of a typical text/photo feed.
-          </p>
-          <ul class="highlights">
-            <li>Real-time voice recording with live audio filters — robot, helium, deep, echo</li>
-            <li>Dual-mode Explore page: worldwide trending by engagement, and nearby by location</li>
-            <li>Architected solo end to end — Firebase Auth, Firestore, Storage, FCM</li>
-          </ul>
-          <div class="chips">
-            <span class="chip">Flutter</span><span class="chip">Firebase</span>
-            <span class="chip">Real-time Audio</span><span class="chip">Geolocation</span>
+        </div>
+
+        <!-- GENSPIRE -->
+        <div class="project">
+          <span class="node live"></span>
+          <div class="project-card">
+            <div class="project-meta">
+              <span class="version-tag mono">v1.0 · 3 months solo</span>
+              <span class="status-badge live">Live</span>
+            </div>
+            <h3>Genspire</h3>
+            <p class="project-tagline">Where startup builders find their next co-founder — not their next follower.</p>
+            <p class="project-desc">
+              A social portfolio and live collaboration network for builders. Built with a
+              recommendation engine on top of Gemini embeddings, real-time voice lounges, and
+              an offline-first sync layer so the feed loads instantly even on bad connections.
+            </p>
+            <ul class="highlights">
+              <li>Gemini (embedding-001) vector search matching builders to relevant projects</li>
+              <li>Multi-room live voice lounges via Agora RTC, with waitlists and auto FCM alerts</li>
+              <li>Cut Firestore reads by 70% with an in-memory name-caching layer</li>
+              <li>Offline-first architecture — SQLite cache loads the feed in ~50ms</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">Flutter</span><span class="chip">Firebase</span>
+              <span class="chip">Agora RTC</span><span class="chip">Gemini AI</span><span class="chip">SQLite</span>
+            </div>
+            <div class="shots">
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-1.png" alt="Genspire feed"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-1.png<br>Feed</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-2.png" alt="Genspire voice lounge"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-2.png<br>Voice Lounge</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-3.png" alt="Genspire builder profile"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-3.png<br>Builder Profile</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-4.png" alt="Genspire search"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-4.png<br>Search</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-5.png" alt="Genspire search"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-5.png<br>Search</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-6.png" alt="Genspire search"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-6.png<br>Search</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-7.png" alt="Genspire search"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-7.png<br>Search</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-8.png" alt="Genspire search"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-8.png<br>Search</div>
+                </div>
+              </div>
+            </div>
+            <div class="project-actions">
+              <a href="REPLACE_ME_GENSPIRE_PLAY_STORE_URL" class="btn btn-primary btn-sm">Get it on Google Play</a>
+            </div>
           </div>
-          <div class="shots">
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/echonym-1.jpg" alt="Echonym home feed" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">echonym-1.jpg<br>Home Feed</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/echonym-2.jpg" alt="Echonym explore page" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">echonym-2.jpg<br>Explore</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/echonym-3.jpg" alt="Echonym voice post creation" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">echonym-3.jpg<br>Voice Post</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/echonym-4.jpg" alt="Echonym groups" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">echonym-4.jpg<br>Groups</div></div></div>
+        </div>
+
+        <!-- RAVL -->
+        <div class="project">
+          <span class="node beta"></span>
+          <div class="project-card">
+            <div class="project-meta">
+              <span class="version-tag mono">v0.6 · 2 months solo</span>
+              <span class="status-badge beta">Closed Beta</span>
+            </div>
+            <h3>Ravl</h3>
+            <p class="project-tagline">Fast, timed conversations designed to spark real connection — not endless
+              swiping.</p>
+            <p class="project-desc">
+              A real-time social discovery app built around short, ephemeral chats and
+              lightweight social games. Vibe-based onboarding feeds a server-side matching
+              system, and avatars sharpen the longer a conversation runs.
+            </p>
+            <ul class="highlights">
+              <li>"Vibe Check" onboarding drives compatibility-based matchmaking</li>
+              <li>3-minute ephemeral chats with progressive "blur reveal" avatars</li>
+              <li>Real-time games — Truth or Dare, Rock Paper Scissors — with server-side scoring</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">Flutter</span><span class="chip">Riverpod</span>
+              <span class="chip">Firebase</span><span class="chip">Cloud Functions</span>
+            </div>
+            <div class="shots">
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/ravl-1.png" alt="Ravl orbit lobby"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">ravl-1.png<br>Orbit Lobby</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/ravl-2.png" alt="Ravl live chat"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">ravl-2.png<br>Live Chat</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/ravl-3.png" alt="Ravl vibe check"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">ravl-3.png<br>Vibe Check</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/ravl-4.png" alt="Ravl games"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">ravl-4.png<br>Games</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/ravl-5.png" alt="Ravl games"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">ravl-5.png<br>Games</div>
+                </div>
+              </div>
+            </div>
+            <div class="project-actions">
+              <a href="mailto:abubakarqazi095@gmail.com?subject=Ravl%20%E2%80%94%20Closed%20Beta%20Access&body=Hi%20Abubakar%2C%0A%0AI%27d%20like%20to%20try%20Ravl%27s%20closed%20beta.%0A%0AHere%27s%20the%20email%20I%27d%20like%20added%20as%20a%20tester%3A%20"
+                class="btn btn-primary btn-sm">Request beta access</a>
+            </div>
           </div>
-          <div class="project-actions">
-            <a href="REPLACE_ME_ECHONYM_PLAY_STORE_URL" class="btn btn-primary btn-sm">Get it on Google Play</a>
+        </div>
+
+        <!-- SOLO INSPECTOR -->
+        <div class="project">
+          <span class="node dev"></span>
+          <div class="project-card">
+            <div class="project-meta">
+              <span class="version-tag mono">v0.3</span>
+              <span class="status-badge dev">In Development</span>
+            </div>
+            <h3>Solo Inspector</h3>
+            <p class="project-tagline">AI-assisted report writing for home inspectors.</p>
+            <p class="project-desc">
+              A focused tool built for the US home-inspection market — drafts inspection
+              reports from a few notes and photos, so inspectors spend less time writing
+              and more time inspecting.
+            </p>
+            <ul class="highlights">
+              <li>AI-assisted report drafting from field notes</li>
+              <li>Built for the day-to-day workflow of independent home inspectors</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">Flutter</span><span class="chip">Firebase</span><span class="chip">AI Drafting</span>
+            </div>
+            <div class="shots">
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/solo-inspector-1.png"
+                  alt="Solo Inspector report draft" onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">solo-inspector-1.png</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/solo-inspector-2.png"
+                  alt="Solo Inspector report list" onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">solo-inspector-2.png</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/solo-inspector-3.png"
+                  alt="Solo Inspector photo capture" onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">solo-inspector-3.png</div>
+                </div>
+              </div>
+            </div>
+            <div class="project-actions">
+              <a href="mailto:abubakarqazi095@gmail.com?subject=Solo%20Inspector%20%E2%80%94%20Notify%20Me%20at%20Launch&body=Hi%20Abubakar%2C%0A%0APlease%20notify%20me%20when%20Solo%20Inspector%20launches.%0A"
+                class="btn btn-ghost btn-sm">Notify me at launch</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- VOICE KHATA -->
+        <div class="project">
+          <span class="node dev"></span>
+          <div class="project-card">
+            <div class="project-meta">
+              <span class="version-tag mono">v0.3</span>
+              <span class="status-badge dev">In Development</span>
+            </div>
+            <h3>Voice Khata</h3>
+            <p class="project-tagline">Speak your ledger entries — built for local shopkeepers.</p>
+            <p class="project-desc">
+              A voice-assistant-driven ledger app that lets shopkeepers record sales and
+              credit entries by speaking, instead of typing into a register by hand.
+            </p>
+            <ul class="highlights">
+              <li>Voice assistant fills ledger entries directly from speech</li>
+              <li>Designed for low-friction daily use with no manual data entry</li>
+            </ul>
+            <div class="chips">
+              <span class="chip">Flutter</span><span class="chip">Firebase</span><span class="chip">Voice
+                Assistant</span>
+            </div>
+            <div class="shots">
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/voice-khata-1.png" alt="Voice Khata ledger entry"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">voice-khata-1.png</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/voice-khata-2.png"
+                  alt="Voice Khata transaction list" onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">voice-khata-2.png</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/voice-khata-3.png" alt="Voice Khata voice input"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">voice-khata-3.png</div>
+                </div>
+              </div>
+            </div>
+            <div class="project-actions">
+              <a href="mailto:abubakarqazi095@gmail.com?subject=Voice%20Khata%20%E2%80%94%20Notify%20Me%20at%20Launch&body=Hi%20Abubakar%2C%0A%0APlease%20notify%20me%20when%20Voice%20Khata%20launches.%0A"
+                class="btn btn-ghost btn-sm">Notify me at launch</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOROLUX -->
+        <div class="project">
+          <span class="node dev"></span>
+          <div class="project-card">
+            <div class="project-meta">
+              <span class="version-tag mono">v0.2</span>
+              <span class="status-badge dev">In Development</span>
+            </div>
+            <h3>Horolux</h3>
+            <p class="project-tagline">A clean, dedicated home for a watch collection.</p>
+            <p class="project-desc">
+              Built for collectors who want a proper digital record of their watches —
+              reference details, condition notes, and the story behind each piece, in one app.
+            </p>
+            <ul class="highlights">
+              <li>Catalog, view, and manage a personal watch collection</li>
+              <li>Built specifically for the watch-collector niche, not a generic inventory app</li>
+            </ul>
+            <div class="chips"><span class="chip">Flutter</span><span class="chip">Firebase</span></div>
+            <div class="shots">
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/horolux-1.png" alt="Horolux collection view"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">horolux-1.png</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/horolux-2.png" alt="Horolux watch detail"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">horolux-2.png</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/horolux-3.png" alt="Horolux add watch"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">horolux-3.png</div>
+                </div>
+              </div>
+            </div>
+            <div class="project-actions">
+              <a href="mailto:abubakarqazi095@gmail.com?subject=Horolux%20%E2%80%94%20Notify%20Me%20at%20Launch&body=Hi%20Abubakar%2C%0A%0APlease%20notify%20me%20when%20Horolux%20launches.%0A"
+                class="btn btn-ghost btn-sm">Notify me at launch</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section class="skills-section" id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag mono">// stack</span>
+        <h2>What's under the hood.</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <span class="gname">Mobile</span>
+          <div class="skill-tags">
+            <span>Flutter</span><span>Dart</span><span>Android</span><span>Play Store Publishing</span>
+            <span>Riverpod</span><span>Provider</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <span class="gname">Backend &amp; Cloud</span>
+          <div class="skill-tags">
+            <span>Firestore</span><span>Realtime Database</span><span>Cloud Functions</span>
+            <span>Auth</span><span>Storage</span><span>FCM</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <span class="gname">AI &amp; Real-Time</span>
+          <div class="skill-tags">
+            <span>Gemini AI</span><span>Vector Embeddings</span><span>Semantic Search</span>
+            <span>Agora RTC</span><span>WebSocket Presence</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <span class="gname">Data &amp; Tools</span>
+          <div class="skill-tags">
+            <span>SQLite</span><span>REST APIs</span><span>TypeScript</span><span>Git</span>
+            <span>React</span><span>Tailwind CSS</span><span>Node.js</span>
           </div>
         </div>
       </div>
-
-      <!-- GENSPIRE -->
-      <div class="project">
-        <span class="node live"></span>
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="version-tag mono">v1.0 · 3 months solo</span>
-            <span class="status-badge live">Live</span>
-          </div>
-          <h3>Genspire</h3>
-          <p class="project-tagline">Where startup builders find their next co-founder — not their next follower.</p>
-          <p class="project-desc">
-            A social portfolio and live collaboration network for builders. Built with a
-            recommendation engine on top of Gemini embeddings, real-time voice lounges, and
-            an offline-first sync layer so the feed loads instantly even on bad connections.
-          </p>
-          <ul class="highlights">
-            <li>Gemini (embedding-001) vector search matching builders to relevant projects</li>
-            <li>Multi-room live voice lounges via Agora RTC, with waitlists and auto FCM alerts</li>
-            <li>Cut Firestore reads by 70% with an in-memory name-caching layer</li>
-            <li>Offline-first architecture — SQLite cache loads the feed in ~50ms</li>
-          </ul>
-          <div class="chips">
-            <span class="chip">Flutter</span><span class="chip">Firebase</span>
-            <span class="chip">Agora RTC</span><span class="chip">Gemini AI</span><span class="chip">SQLite</span>
-          </div>
-          <div class="shots">
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/genspire-1.jpg" alt="Genspire feed" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">genspire-1.jpg<br>Feed</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/genspire-2.jpg" alt="Genspire voice lounge" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">genspire-2.jpg<br>Voice Lounge</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/genspire-3.jpg" alt="Genspire builder profile" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">genspire-3.jpg<br>Builder Profile</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/genspire-4.jpg" alt="Genspire search" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">genspire-4.jpg<br>Search</div></div></div>
-          </div>
-          <div class="project-actions">
-            <a href="REPLACE_ME_GENSPIRE_PLAY_STORE_URL" class="btn btn-primary btn-sm">Get it on Google Play</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- RAVL -->
-      <div class="project">
-        <span class="node beta"></span>
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="version-tag mono">v0.6 · 2 months solo</span>
-            <span class="status-badge beta">Closed Beta</span>
-          </div>
-          <h3>Ravl</h3>
-          <p class="project-tagline">Fast, timed conversations designed to spark real connection — not endless swiping.</p>
-          <p class="project-desc">
-            A real-time social discovery app built around short, ephemeral chats and
-            lightweight social games. Vibe-based onboarding feeds a server-side matching
-            system, and avatars sharpen the longer a conversation runs.
-          </p>
-          <ul class="highlights">
-            <li>"Vibe Check" onboarding drives compatibility-based matchmaking</li>
-            <li>3-minute ephemeral chats with progressive "blur reveal" avatars</li>
-            <li>Real-time games — Truth or Dare, Rock Paper Scissors — with server-side scoring</li>
-          </ul>
-          <div class="chips">
-            <span class="chip">Flutter</span><span class="chip">Riverpod</span>
-            <span class="chip">Firebase</span><span class="chip">Cloud Functions</span>
-          </div>
-          <div class="shots">
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/ravl-1.jpg" alt="Ravl orbit lobby" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">ravl-1.jpg<br>Orbit Lobby</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/ravl-2.jpg" alt="Ravl live chat" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">ravl-2.jpg<br>Live Chat</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/ravl-3.jpg" alt="Ravl vibe check" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">ravl-3.jpg<br>Vibe Check</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/ravl-4.jpg" alt="Ravl games" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">ravl-4.jpg<br>Games</div></div></div>
-          </div>
-          <div class="project-actions">
-            <a href="mailto:abubakarqazi095@gmail.com?subject=Ravl%20%E2%80%94%20Closed%20Beta%20Access&body=Hi%20Abubakar%2C%0A%0AI%27d%20like%20to%20try%20Ravl%27s%20closed%20beta.%0A%0AHere%27s%20the%20email%20I%27d%20like%20added%20as%20a%20tester%3A%20" class="btn btn-primary btn-sm">Request beta access</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- SOLO INSPECTOR -->
-      <div class="project">
-        <span class="node dev"></span>
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="version-tag mono">v0.3</span>
-            <span class="status-badge dev">In Development</span>
-          </div>
-          <h3>Solo Inspector</h3>
-          <p class="project-tagline">AI-assisted report writing for home inspectors.</p>
-          <p class="project-desc">
-            A focused tool built for the US home-inspection market — drafts inspection
-            reports from a few notes and photos, so inspectors spend less time writing
-            and more time inspecting.
-          </p>
-          <ul class="highlights">
-            <li>AI-assisted report drafting from field notes</li>
-            <li>Built for the day-to-day workflow of independent home inspectors</li>
-          </ul>
-          <div class="chips">
-            <span class="chip">Flutter</span><span class="chip">Firebase</span><span class="chip">AI Drafting</span>
-          </div>
-          <div class="shots">
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/solo-inspector-1.jpg" alt="Solo Inspector report draft" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">solo-inspector-1.jpg</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/solo-inspector-2.jpg" alt="Solo Inspector report list" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">solo-inspector-2.jpg</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/solo-inspector-3.jpg" alt="Solo Inspector photo capture" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">solo-inspector-3.jpg</div></div></div>
-          </div>
-          <div class="project-actions">
-            <a href="mailto:abubakarqazi095@gmail.com?subject=Solo%20Inspector%20%E2%80%94%20Notify%20Me%20at%20Launch&body=Hi%20Abubakar%2C%0A%0APlease%20notify%20me%20when%20Solo%20Inspector%20launches.%0A" class="btn btn-ghost btn-sm">Notify me at launch</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- VOICE KHATA -->
-      <div class="project">
-        <span class="node dev"></span>
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="version-tag mono">v0.3</span>
-            <span class="status-badge dev">In Development</span>
-          </div>
-          <h3>Voice Khata</h3>
-          <p class="project-tagline">Speak your ledger entries — built for local shopkeepers.</p>
-          <p class="project-desc">
-            A voice-assistant-driven ledger app that lets shopkeepers record sales and
-            credit entries by speaking, instead of typing into a register by hand.
-          </p>
-          <ul class="highlights">
-            <li>Voice assistant fills ledger entries directly from speech</li>
-            <li>Designed for low-friction daily use with no manual data entry</li>
-          </ul>
-          <div class="chips">
-            <span class="chip">Flutter</span><span class="chip">Firebase</span><span class="chip">Voice Assistant</span>
-          </div>
-          <div class="shots">
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/voice-khata-1.jpg" alt="Voice Khata ledger entry" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">voice-khata-1.jpg</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/voice-khata-2.jpg" alt="Voice Khata transaction list" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">voice-khata-2.jpg</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/voice-khata-3.jpg" alt="Voice Khata voice input" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">voice-khata-3.jpg</div></div></div>
-          </div>
-          <div class="project-actions">
-            <a href="mailto:abubakarqazi095@gmail.com?subject=Voice%20Khata%20%E2%80%94%20Notify%20Me%20at%20Launch&body=Hi%20Abubakar%2C%0A%0APlease%20notify%20me%20when%20Voice%20Khata%20launches.%0A" class="btn btn-ghost btn-sm">Notify me at launch</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- HOROLUX -->
-      <div class="project">
-        <span class="node dev"></span>
-        <div class="project-card">
-          <div class="project-meta">
-            <span class="version-tag mono">v0.2</span>
-            <span class="status-badge dev">In Development</span>
-          </div>
-          <h3>Horolux</h3>
-          <p class="project-tagline">A clean, dedicated home for a watch collection.</p>
-          <p class="project-desc">
-            Built for collectors who want a proper digital record of their watches —
-            reference details, condition notes, and the story behind each piece, in one app.
-          </p>
-          <ul class="highlights">
-            <li>Catalog, view, and manage a personal watch collection</li>
-            <li>Built specifically for the watch-collector niche, not a generic inventory app</li>
-          </ul>
-          <div class="chips"><span class="chip">Flutter</span><span class="chip">Firebase</span></div>
-          <div class="shots">
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/horolux-1.jpg" alt="Horolux collection view" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">horolux-1.jpg</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/horolux-2.jpg" alt="Horolux watch detail" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">horolux-2.jpg</div></div></div>
-            <div class="phone"><div class="notch"></div><img src="assets/screenshots/horolux-3.jpg" alt="Horolux add watch" onerror="this.parentElement.classList.add('ph-fallback')"><div class="placeholder"><div class="icon">📱</div><div class="fname mono">horolux-3.jpg</div></div></div>
-          </div>
-          <div class="project-actions">
-            <a href="mailto:abubakarqazi095@gmail.com?subject=Horolux%20%E2%80%94%20Notify%20Me%20at%20Launch&body=Hi%20Abubakar%2C%0A%0APlease%20notify%20me%20when%20Horolux%20launches.%0A" class="btn btn-ghost btn-sm">Notify me at launch</a>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= SKILLS ================= -->
-<section class="skills-section" id="skills">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag mono">// stack</span>
-      <h2>What's under the hood.</h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <span class="gname">Mobile</span>
-        <div class="skill-tags">
-          <span>Flutter</span><span>Dart</span><span>Android</span><span>Play Store Publishing</span>
-          <span>Riverpod</span><span>Provider</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <span class="gname">Backend &amp; Cloud</span>
-        <div class="skill-tags">
-          <span>Firestore</span><span>Realtime Database</span><span>Cloud Functions</span>
-          <span>Auth</span><span>Storage</span><span>FCM</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <span class="gname">AI &amp; Real-Time</span>
-        <div class="skill-tags">
-          <span>Gemini AI</span><span>Vector Embeddings</span><span>Semantic Search</span>
-          <span>Agora RTC</span><span>WebSocket Presence</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <span class="gname">Data &amp; Tools</span>
-        <div class="skill-tags">
-          <span>SQLite</span><span>REST APIs</span><span>TypeScript</span><span>Git</span>
-          <span>React</span><span>Tailwind CSS</span><span>Node.js</span>
-        </div>
+  <!-- ================= CONTACT ================= -->
+  <section class="contact-section" id="contact">
+    <div class="wrap">
+      <span class="tag mono"
+        style="color:var(--gold); font-family:'JetBrains Mono',monospace; font-size:13px; display:block; margin-bottom:10px;">//
+        contact</span>
+      <h2>Let&#x2019;s build something.</h2>
+      <p>
+        Open to roles, freelance work, and collaborations — Flutter, Firebase,
+        real-time systems, or AI-integrated products. Based in Islamabad, open to remote.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:abubakarqazi095@gmail.com?subject=Let%27s%20talk"
+          class="btn btn-primary">abubakarqazi095@gmail.com</a>
+        <a href="https://github.com/abubakar-qazi" class="btn btn-ghost">GitHub</a>
+        <a href="https://linkedin.com/in/abubakar-qazi-6b9934311" class="btn btn-ghost">LinkedIn</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ================= CONTACT ================= -->
-<section class="contact-section" id="contact">
-  <div class="wrap">
-    <span class="tag mono" style="color:var(--gold); font-family:'JetBrains Mono',monospace; font-size:13px; display:block; margin-bottom:10px;">// contact</span>
-    <h2>Let&#x2019;s build something.</h2>
-    <p>
-      Open to roles, freelance work, and collaborations — Flutter, Firebase,
-      real-time systems, or AI-integrated products. Based in Islamabad, open to remote.
-    </p>
-    <div class="contact-links">
-      <a href="mailto:abubakarqazi095@gmail.com?subject=Let%27s%20talk" class="btn btn-primary">abubakarqazi095@gmail.com</a>
-      <a href="https://github.com/abubakar-qazi" class="btn btn-ghost">GitHub</a>
-      <a href="https://linkedin.com/in/abubakar-qazi-6b9934311" class="btn btn-ghost">LinkedIn</a>
+  <footer>
+    <div class="wrap footer-inner">
+      <p>&copy; <span id="year"></span> Abubakar Qazi — built solo, like everything else here.</p>
+      <div class="socials">
+        <a href="https://github.com/abubakar-qazi">GitHub</a>
+        <a href="https://linkedin.com/in/abubakar-qazi-6b9934311">LinkedIn</a>
+        <a href="mailto:abubakarqazi095@gmail.com">Email</a>
+      </div>
     </div>
-  </div>
-</section>
+  </footer>
 
-<footer>
-  <div class="wrap footer-inner">
-    <p>&copy; <span id="year"></span> Abubakar Qazi — built solo, like everything else here.</p>
-    <div class="socials">
-      <a href="https://github.com/abubakar-qazi">GitHub</a>
-      <a href="https://linkedin.com/in/abubakar-qazi-6b9934311">LinkedIn</a>
-      <a href="mailto:abubakarqazi095@gmail.com">Email</a>
-    </div>
-  </div>
-</footer>
+  <style>
+    /* fallback state for missing screenshots: hide broken img, show placeholder */
+    .phone img {
+      opacity: 0;
+      position: absolute;
+    }
 
-<style>
-  /* fallback state for missing screenshots: hide broken img, show placeholder */
-  .phone img{opacity:0; position:absolute;}
-  .phone .placeholder{display:none;}
-  .phone.ph-fallback .placeholder{display:block;}
-  .phone:not(.ph-fallback) .placeholder{display:block;} /* shown by default until image loads */
-  .phone img[src]:not([src=""]){opacity:0;}
-</style>
+    .phone .placeholder {
+      display: none;
+    }
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+    .phone.ph-fallback .placeholder {
+      display: block;
+    }
 
-  // mobile nav toggle
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+    .phone:not(.ph-fallback) .placeholder {
+      display: block;
+    }
 
-  // image load detection: if a real screenshot loads successfully, hide the placeholder and show the image
-  document.querySelectorAll('.phone img').forEach(img => {
-    img.addEventListener('load', () => {
-      if(img.naturalWidth > 0){
-        img.style.opacity = '1';
-        const ph = img.parentElement.querySelector('.placeholder');
-        if(ph) ph.style.display = 'none';
-      }
+    /* shown by default until image loads */
+    .phone img[src]:not([src=""]) {
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // image load detection: if a real screenshot loads successfully, hide the placeholder and show the image
+    document.querySelectorAll('.phone img').forEach(img => {
+      img.addEventListener('load', () => {
+        if (img.naturalWidth > 0) {
+          img.style.opacity = '1';
+          const ph = img.parentElement.querySelector('.placeholder');
+          if (ph) ph.style.display = 'none';
+        }
+      });
     });
-  });
 
-  // scroll reveal for project cards — enhancement only, never required for visibility
-  if('IntersectionObserver' in window){
-    try{
-      const projects = document.querySelectorAll('.project');
-      projects.forEach(p => p.classList.add('reveal'));
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in-view'); });
-      }, { threshold: 0.12 });
-      projects.forEach(p => io.observe(p));
-      setTimeout(() => projects.forEach(p => p.classList.add('in-view')), 4000); // safety net
-    }catch(e){ /* fail silently — cards are visible by default */ }
-  }
+    // scroll reveal for project cards — enhancement only, never required for visibility
+    if ('IntersectionObserver' in window) {
+      try {
+        const projects = document.querySelectorAll('.project');
+        projects.forEach(p => p.classList.add('reveal'));
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+        }, { threshold: 0.12 });
+        projects.forEach(p => io.observe(p));
+        setTimeout(() => projects.forEach(p => p.classList.add('in-view')), 4000); // safety net
+      } catch (e) { /* fail silently — cards are visible by default */ }
+    }
 
-</script>
+  </script>
 
 </body>
+
 </html>
