@@ -605,58 +605,6 @@
       flex-shrink: 0;
     }
 
-    /* Detailed variant — for flagship live apps with deeper technical write-ups.
-       Uses CSS grid (not flex) so long descriptions wrap normally instead of
-       squeezing into broken narrow columns. */
-    .highlights.detailed {
-      gap: 16px;
-    }
-
-    .highlights.detailed li {
-      display: grid;
-      grid-template-columns: 178px 1fr;
-      gap: 16px;
-      align-items: start;
-    }
-
-    .highlights.detailed li::before {
-      content: none;
-    }
-
-    .hl-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      line-height: 1.45;
-      padding-top: 1px;
-    }
-
-    .hl-desc {
-      font-size: 14.5px;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .hl-desc code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.9em;
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      padding: 1px 5px;
-      border-radius: 4px;
-      color: var(--text);
-    }
-
-    @media (max-width: 640px) {
-      .highlights.detailed li {
-        grid-template-columns: 1fr;
-        gap: 5px;
-      }
-    }
-
     .chips {
       display: flex;
       gap: 8px;
@@ -941,24 +889,20 @@
               <span class="status-badge live">Live</span>
             </div>
             <h3>Echonym</h3>
-            <p class="project-tagline">A highly secure, offline-first anonymous social platform engineered for scale.</p>
+            <p class="project-tagline">A highly secure, offline-first anonymous social platform engineered for massive scale.</p>
             <p class="project-desc">
-              A full-stack application built around zero-latency UX: a 3-tier frontend
-              (Riverpod &rarr; SQLite &rarr; Firestore) for instant startup, and an
-              event-driven Node.js/TypeScript backend where every mutation runs through
-              secure, transactional Cloud Functions instead of direct client writes.
+              A comprehensive full-stack application prioritizing zero-latency UX and extreme performance. The frontend utilizes a robust 3-tier architecture (Riverpod &rarr; SQLite &rarr; Firestore), guaranteeing instantaneous startup via silent background FCM syncing and aggressive media caching. The Node.js/TypeScript backend employs an event-driven architecture with zero client-side database writes, enforcing all mutations through secure, transactional Cloud Functions.
             </p>
-            <ul class="highlights detailed">
-              <li><span class="hl-label">Zero-latency startup</span><span class="hl-desc">3-tier architecture (Riverpod → SQLite → Firestore). Background FCM sync silently populates the local cache — the app opens to data instantly, no loading spinner.</span></li>
-              <li><span class="hl-label">Audio DSP pipeline</span><span class="hl-desc">Real-time voice anonymization via FFmpeg filter chains, paired with a 60fps waveform visualizer rendered through a hand-built <code>CustomPainter</code> — zero image assets, pure canvas math.</span></li>
-              <li><span class="hl-label">AI moderation at upload</span><span class="hl-desc">Every photo and display name is routed through a Hive AI moderation pipeline before going live, with Firestore security rules enforcing pending/rejected states.</span></li>
-              <li><span class="hl-label">Event-driven backend</span><span class="hl-desc">Node.js/TypeScript Cloud Functions handle all mutations via Firestore triggers — zero client-side writes. Hourly cron jobs apply logarithmic decay to trending scores.</span></li>
-              <li><span class="hl-label">Discovery engine</span><span class="hl-desc">Algolia semantic search combined with geospatial bounding-box queries and a multi-variable popularity ranking algorithm — all computed server-side.</span></li>
+            <ul class="highlights">
+              <li><strong>Performance & Scalability:</strong> Eliminated N+1 Firestore queries via batched Riverpod providers. Implemented custom LRU memory/disk media caching and Optimistic UI.</li>
+              <li><strong>Security & Moderation:</strong> Hardened infrastructure using AppCheck (Play Integrity), SHA-256 device fingerprinting, and automated Hive AI moderation pipelines for all uploads.</li>
+              <li><strong>Audio DSP & Custom UI:</strong> Real-time voice anonymization using complex FFmpeg filter chains and 60fps mathematically generated waveform CustomPainters.</li>
+              <li><strong>Backend Architecture:</strong> Event-driven Node.js backend using Firestore triggers for async data aggregation and hourly cron jobs for logarithmic trending decay.</li>
+              <li><strong>Advanced Discovery:</strong> Custom geospatial bounding-box search, Algolia semantic search, and a multi-variable logarithmic group popularity ranking algorithm.</li>
             </ul>
             <div class="chips">
-              <span class="chip">Flutter</span><span class="chip">Node.js</span><span class="chip">TypeScript</span>
-              <span class="chip">Firebase</span><span class="chip">Cloud Functions</span><span class="chip">Riverpod</span>
-              <span class="chip">SQLite</span><span class="chip">FFmpeg</span><span class="chip">Algolia</span><span class="chip">Hive AI</span>
+              <span class="chip">Flutter</span><span class="chip">Node.js</span><span class="chip">Firebase</span><span class="chip">Cloud Functions</span>
+              <span class="chip">Riverpod</span><span class="chip">SQLite</span><span class="chip">FFmpeg DSP</span><span class="chip">Algolia</span>
             </div>
             <div class="shots">
               <div class="phone">
@@ -993,6 +937,38 @@
                   <div class="fname mono">echonym-4.webp<br>Groups</div>
                 </div>
               </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-5.webp" alt="Echonym groups"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-5.webp<br>Groups</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-6.webp" alt="Echonym groups"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-6.webp<br>Groups</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-7.webp" alt="Echonym groups"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-7.webp<br>Groups</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/echonym-8.webp" alt="Echonym groups"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">echonym-8.webp<br>Groups</div>
+                </div>
+              </div>
             </div>
             <div class="project-actions">
               <a href="REPLACE_ME_ECHONYM_PLAY_STORE_URL" class="btn btn-primary btn-sm">Get it on Google Play</a>
@@ -1005,30 +981,25 @@
           <span class="node live"></span>
           <div class="project-card">
             <div class="project-meta">
-              <span class="version-tag mono">v1.0+48 · 3 months solo</span>
+              <span class="version-tag mono">v1.0 · 3 months solo</span>
               <span class="status-badge live">Live</span>
             </div>
             <h3>Genspire</h3>
             <p class="project-tagline">Where startup builders find their next co-founder — not their next follower.</p>
             <p class="project-desc">
-              A full-stack social portfolio and collaboration platform for builders, solo-built
-              from the ground up: a Gemini-powered semantic recommendation engine, Agora RTC
-              voice lounges with a mutex-guarded state machine, and an offline-first sync
-              pipeline. Every layer — auth, security rules, backend Cloud Functions, and
-              real-time presence — designed and shipped solo.
+              A social portfolio and live collaboration network for builders. Built with a
+              recommendation engine on top of Gemini embeddings, real-time voice lounges, and
+              an offline-first sync layer so the feed loads instantly even on bad connections.
             </p>
-            <ul class="highlights detailed">
-              <li><span class="hl-label">Gemini vector recommendation engine</span><span class="hl-desc">Cloud Functions auto-vectorize every build and profile via <code>embedding-001</code>. <code>getPersonalizedFeed</code> runs cosine similarity against the user's onboarding intent vector, filtered at a 0.20 threshold — real vector math, not keyword search.</span></li>
-              <li><span class="hl-label">Mutex-guarded Agora state machine</span><span class="hl-desc">Join/leave operations are serialized through a custom mutex in a ~1,500-line service — handling stale-session detection, token renewal 5 minutes before expiry, live connection-quality badges, and ghost-participant cleanup.</span></li>
-              <li><span class="hl-label">TOCTOU-proof username claims</span><span class="hl-desc">Username changes run inside a single Firestore transaction — read old handle, check new handle availability, atomically swap both documents. No race condition possible, even under concurrent requests.</span></li>
-              <li><span class="hl-label">Offline-first repository pattern</span><span class="hl-desc">Feed loads from local SQLite in ~50ms on cold start, while a background Dart isolate silently syncs new builds via FCM topic notifications — the UI never blocks on network.</span></li>
-              <li><span class="hl-label">Force-update gating + crash reporting</span><span class="hl-desc">Every cold start checks a Firestore <code>minRequiredVersion</code> doc and blocks the app behind an update dialog if outdated. Crashlytics is wired into Flutter's global error handlers, tagged to the authenticated user.</span></li>
+            <ul class="highlights">
+              <li>Gemini (embedding-001) vector search matching builders to relevant projects</li>
+              <li>Multi-room live voice lounges via Agora RTC, with waitlists and auto FCM alerts</li>
+              <li>Cut Firestore reads by 70% with an in-memory name-caching layer</li>
+              <li>Offline-first architecture — SQLite cache loads the feed in ~50ms</li>
             </ul>
             <div class="chips">
-              <span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Firebase</span>
-              <span class="chip">Firestore</span><span class="chip">Realtime Database</span><span class="chip">Cloud Functions</span>
+              <span class="chip">Flutter</span><span class="chip">Firebase</span>
               <span class="chip">Agora RTC</span><span class="chip">Gemini AI</span><span class="chip">SQLite</span>
-              <span class="chip">Riverpod</span><span class="chip">Crashlytics</span>
             </div>
             <div class="shots">
               <div class="phone">
@@ -1063,6 +1034,38 @@
                   <div class="fname mono">genspire-4.webp<br>Search</div>
                 </div>
               </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-5.webp" alt="Genspire search"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-5.webp<br>Search</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-6.webp" alt="Genspire search"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-6.webp<br>Search</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-7.webp" alt="Genspire search"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-7.webp<br>Search</div>
+                </div>
+              </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/genspire-8.webp" alt="Genspire search"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">genspire-8.webp<br>Search</div>
+                </div>
+              </div>
             </div>
             <div class="project-actions">
               <a href="REPLACE_ME_GENSPIRE_PLAY_STORE_URL" class="btn btn-primary btn-sm">Get it on Google Play</a>
@@ -1079,27 +1082,21 @@
               <span class="status-badge beta">Closed Beta</span>
             </div>
             <h3>Ravl</h3>
-            <p class="project-tagline">A high-frequency real-time connection engine disguised as a dating app.</p>
+            <p class="project-tagline">Fast, timed conversations designed to spark real connection — not endless
+              swiping.</p>
             <p class="project-desc">
-              Built to handle aggressive concurrent state mutations and rapid UI rebuilds. 
-              Features a character-by-character live chat system, idempotent mini-game state machines, 
-              and a sophisticated push notification lifecycle manager—all operating under strict 
-              60fps rendering constraints via pure Canvas drawing and micro-optimized Riverpod subscriptions.
+              A real-time social discovery app built around short, ephemeral chats and
+              lightweight social games. Vibe-based onboarding feeds a server-side matching
+              system, and avatars sharpen the longer a conversation runs.
             </p>
-            <ul class="highlights detailed">
-              <li><span class="hl-label">O(1) Matchmaking & Lock Collapsing</span><span class="hl-desc">The matching engine uses distributed RTDB locks to prevent concurrent claim race conditions. By collapsing 100+ sequential lock reads into a single tree snapshot, the matchmaking latency was cut by 400-900ms per user.</span></li>
-              <li><span class="hl-label">Cost-free Algorithmic Waveforms</span><span class="hl-desc">Instead of extracting and storing heavy audio amplitude arrays in Firestore, voice message waveforms are pseudo-randomly generated on the fly using the <code>audioUrl.hashCode</code> as a stable seed. Both clients see identical waveforms, costing $0 in database storage.</span></li>
-              <li><span class="hl-label">High-frequency RTDB WebSockets</span><span class="hl-desc">Live chat streams character-by-character via Firebase Realtime Database. Uses single atomic <code>.update()</code> calls to prevent state tearing, and <code>onDisconnect()</code> listeners to instantly clear ghost typing states if a client drops cell service.</span></li>
-              <li><span class="hl-label">Idempotent Game Resolution</span><span class="hl-desc">Mini-game timeouts (e.g. Rock Paper Scissors) are highly susceptible to race conditions. The backend resolves these via strict Firestore transactions, ensuring if both clients submit a timeout request simultaneously, the first locks the state and the second safely no-ops.</span></li>
-              <li><span class="hl-label">Zero-Read Unread Badging</span><span class="hl-desc">Instead of opening a global Firestore listener for the unread badge, the <code>totalUnreadCountProvider</code> derives its state purely from the already-cached Riverpod memory stream, saving thousands of unnecessary database reads daily.</span></li>
-              <li><span class="hl-label">Self-healing Push Infrastructure</span><span class="hl-desc">The custom notification router parses FCM multicast response arrays in real-time. If Google returns <code>invalid-registration-token</code>, a Cloud Function uses <code>FieldValue.arrayRemove()</code> to instantly prune the dead token, preventing permanent bandwidth leaks.</span></li>
-              <li><span class="hl-label">Keystroke Latency Optimization</span><span class="hl-desc">Profiling revealed that registering RTDB <code>onDisconnect()</code> listeners inside the text-changed loop added a 100-300ms penalty per keystroke. Hoisting this listener strictly to <code>initState</code> restored instant type-ahead performance.</span></li>
+            <ul class="highlights">
+              <li>"Vibe Check" onboarding drives compatibility-based matchmaking</li>
+              <li>3-minute ephemeral chats with progressive "blur reveal" avatars</li>
+              <li>Real-time games — Truth or Dare, Rock Paper Scissors — with server-side scoring</li>
             </ul>
             <div class="chips">
               <span class="chip">Flutter</span><span class="chip">Riverpod</span>
-              <span class="chip">Realtime Database</span><span class="chip">Firestore</span>
-              <span class="chip">Cloud Functions</span><span class="chip">FCM</span>
-              <span class="chip">CustomPainter</span>
+              <span class="chip">Firebase</span><span class="chip">Cloud Functions</span>
             </div>
             <div class="shots">
               <div class="phone">
@@ -1134,6 +1131,14 @@
                   <div class="fname mono">ravl-4.webp<br>Games</div>
                 </div>
               </div>
+              <div class="phone">
+                <div class="notch"></div><img src="assets/screenshots/ravl-5.webp" alt="Ravl games"
+                  onerror="this.parentElement.classList.add('ph-fallback')">
+                <div class="placeholder">
+                  <div class="icon">📱</div>
+                  <div class="fname mono">ravl-5.webp<br>Games</div>
+                </div>
+              </div>
             </div>
             <div class="project-actions">
               <a href="mailto:abubakarqazi095@gmail.com?subject=Ravl%20%E2%80%94%20Closed%20Beta%20Access&body=Hi%20Abubakar%2C%0A%0AI%27d%20like%20to%20try%20Ravl%27s%20closed%20beta.%0A%0AHere%27s%20the%20email%20I%27d%20like%20added%20as%20a%20tester%3A%20"
@@ -1153,21 +1158,16 @@
             <h3>Solo Inspector</h3>
             <p class="project-tagline">AI-assisted report writing for home inspectors.</p>
             <p class="project-desc">
-              A focused tool built for the US home-inspection market. It eliminates hours of manual data entry by processing rough field notes and photos into a formal, legal PDF report entirely on-device.
+              A focused tool built for the US home-inspection market — drafts inspection
+              reports from a few notes and photos, so inspectors spend less time writing
+              and more time inspecting.
             </p>
-            <ul class="highlights detailed">
-              <li><span class="hl-label">Gemini Vision Pipeline</span><span class="hl-desc">Integrates the <code>gemini-flash-latest</code> multimodal model via the <code>firebase_ai</code> SDK to automatically analyze inspection photos and expand rough shorthand notes into professional, legally appropriate observation sentences.</span></li>
-              <li><span class="hl-label">Context-Aware AI Prompting</span><span class="hl-desc">The UI dynamically aggregates form data (e.g., system type, material, condition) from the current wizard step and injects it as silent system context into the Gemini API. This allows the LLM to write highly specific deficiency notes without the inspector needing to re-type background details.</span></li>
-              <li><span class="hl-label">Offline-first Riverpod Wizard</span><span class="hl-desc">Manages a complex, multi-system inspection state (Roof, Electrical, Plumbing, etc.) using Riverpod notifiers. All mutations instantly commit to Firestore's local offline cache, allowing inspectors to work seamlessly in basements without cell service.</span></li>
-              <li><span class="hl-label">Immutable State Architecture</span><span class="hl-desc">The entire 10-step inspection wizard operates on a massive immutable data structure. The state notifier handles complex nested mutations (e.g., adding a photo to a specific subsystem) via <code>copyWith</code>, ensuring predictable UI rebuilds and zero state-tearing.</span></li>
-              <li><span class="hl-label">On-device Image Compression</span><span class="hl-desc">Aggressively resizes and encodes inspection photos locally using <code>flutter_image_compress</code> before they hit the network. This minimizes memory overhead during PDF generation and significantly reduces payload sizes sent to the Gemini Vision API.</span></li>
-              <li><span class="hl-label">On-device PDF Generation</span><span class="hl-desc">A custom programmatic layout engine built with the <code>pdf</code> package. It dynamically compiles hundreds of data points, photo grids, and vector signature blocks into a multi-page, executive-summary PDF entirely on the client side without relying on backend rendering.</span></li>
-              <li><span class="hl-label">Automated Image Captioning</span><span class="hl-desc">The custom <code>PhotoCaptureGrid</code> maps each photo's strongly-typed enum to specific structural components (e.g., "Shingles, flashing, gutters"). When a photo is taken, it pushes the compressed image and context to Gemini Vision to automatically generate precise, professional image captions, completely eliminating keyboard typing in the field.</span></li>
-              <li><span class="hl-label">Legal Signature Lock-in</span><span class="hl-desc">The <code>SignaturePadWidget</code> uses raw canvas tracking to capture vector signatures, instantly writing them to local storage as transparent PNGs. It enforces a visual lock-in state in Riverpod to securely hold the signature, preventing accidental erasure before final PDF compilation.</span></li>
+            <ul class="highlights">
+              <li>AI-assisted report drafting from field notes</li>
+              <li>Built for the day-to-day workflow of independent home inspectors</li>
             </ul>
             <div class="chips">
-              <span class="chip">Flutter</span><span class="chip">Riverpod</span><span class="chip">Firebase</span>
-              <span class="chip">Firestore</span><span class="chip">Gemini AI</span><span class="chip">PDF Generation</span>
+              <span class="chip">Flutter</span><span class="chip">Firebase</span><span class="chip">AI Drafting</span>
             </div>
             <div class="shots">
               <div class="phone">
@@ -1214,17 +1214,15 @@
             <p class="project-tagline">Speak your ledger entries — built for local shopkeepers.</p>
             <p class="project-desc">
               A voice-assistant-driven ledger app that lets shopkeepers record sales and
-              credit entries by speaking, instead of typing into a register by hand. Engineered with an NLP intent-parsing pipeline and custom audio streaming lifecycle.
+              credit entries by speaking, instead of typing into a register by hand.
             </p>
-            <ul class="highlights detailed">
-              <li><span class="hl-label">Urdu Speech-to-Text Pipeline</span><span class="hl-desc">Integrates the Deepgram API using the <code>nova-3</code> model to transcribe spoken Urdu audio directly into text, highly optimized with custom keyterms for ledger vocabulary like <code>udhaar</code>, <code>vasooli</code>, and <code>khata</code>.</span></li>
-              <li><span class="hl-label">AI Intent Extraction</span><span class="hl-desc">Routes the raw transcribed text through a Gemini-Flash language model. Using strict system instructions, it acts as an NLP parser to automatically extract the customer name, numerical amount, and transaction type (debit/credit) into a structured JSON payload.</span></li>
-              <li><span class="hl-label">State Machine Architecture</span><span class="hl-desc">Employs a custom <code>RecordingNotifier</code> via Riverpod to manage the complex async state machine of the audio lifecycle—seamlessly transitioning between <code>idle</code>, <code>recording</code>, <code>processing</code>, and <code>confirming</code> states.</span></li>
-              <li><span class="hl-label">Offline-first SQLite Storage</span><span class="hl-desc">All parsed transactions are saved to a local SQLite database with a Singleton <code>DatabaseHelper</code>. This guarantees that ledger data is securely stored on-device and instantly accessible without requiring an internet connection for reads.</span></li>
+            <ul class="highlights">
+              <li>Voice assistant fills ledger entries directly from speech</li>
+              <li>Designed for low-friction daily use with no manual data entry</li>
             </ul>
             <div class="chips">
-              <span class="chip">Flutter</span><span class="chip">Riverpod</span><span class="chip">Deepgram STT</span>
-              <span class="chip">Gemini AI</span><span class="chip">SQLite</span>
+              <span class="chip">Flutter</span><span class="chip">Firebase</span><span class="chip">Voice
+                Assistant</span>
             </div>
             <div class="shots">
               <div class="phone">
@@ -1268,25 +1266,16 @@
               <span class="status-badge dev">In Development</span>
             </div>
             <h3>Horolux</h3>
-            <p class="project-tagline">A secure, AI-powered digital vault for luxury watch collectors.</p>
+            <p class="project-tagline">A clean, dedicated home for a watch collection.</p>
             <p class="project-desc">
-              A purpose-built Flutter app that treats a watch collection like a financial asset portfolio. It combines Gemini AI vision scanning, AES-256 encrypted offline storage, an interactive analytics engine, and a cinematic showcase mode — all in a single, offline-first app.
+              Built for collectors who want a proper digital record of their watches —
+              reference details, condition notes, and the story behind each piece, in one app.
             </p>
-            <ul class="highlights detailed">
-              <li><span class="hl-label">Gemini Vision Scanner</span><span class="hl-desc">The <code>ScannerScreen</code> accepts a live camera capture or gallery image and immediately pipes the raw <code>Uint8List</code> bytes into <code>gemini-flash-latest</code> via the <code>google_generative_ai</code> SDK. The model returns a strict JSON payload containing <code>brand</code>, <code>modelName</code>, and <code>referenceNumber</code>. The app then fires a second Gemini call with an expert-appraiser system prompt to estimate the current USD secondary-market value. A custom <code>AnimationController</code> drives a triple-ring pulsing scanner UI during the two-stage AI pipeline.</span></li>
-              <li><span class="hl-label">AES-256 Encrypted Vault</span><span class="hl-desc">The <code>StorageService</code> orchestrates a fully encrypted Hive box named <code>watch_vault</code>. On first launch it calls <code>Hive.generateSecureKey()</code>, encodes it as a Base64 URL string, and writes it to the device keychain via <code>flutter_secure_storage</code>. Every subsequent launch reads the key, decodes it, and opens the box with <code>HiveAesCipher</code> — meaning the entire collection is AES-256 protected at rest with zero plaintext footprint.</span></li>
-              <li><span class="hl-label">Portfolio Analytics Engine</span><span class="hl-desc">A dedicated <code>_AnalyticsData</code> model computed from the live vault state calculates total portfolio value, cost basis, unrealised gain/loss percentage, total service expenditure, and a 5-year maintenance health score. This data drives an interactive <code>fl_chart</code> donut chart (brand value distribution with touch-to-reveal slice percentages) and animated horizontal progress bars ranking every piece by ROI.</span></li>
-              <li><span class="hl-label">Provenance Passport PDF</span><span class="hl-desc">The <code>PdfExportService</code> constructs a multi-page A4 document entirely on-device using the <code>pdf</code> package. It programmatically renders a circular hero image (280 × 280 pt, clipped to an oval), branded headers with copper letterpress styling, an asset-details table, a valuation block with the AI-estimated market value highlighted, and a chronological service ledger grid. The finished PDF is shared natively via <code>Printing.sharePdf</code>.</span></li>
-              <li><span class="hl-label">Immutable Riverpod State</span><span class="hl-desc">All collection mutations flow through a single <code>VaultNotifier extends Notifier&lt;List&lt;WatchItem&gt;&gt;</code>. The <code>WatchItem</code> model implements a full <code>copyWith</code> pattern, letting the detail screen refresh an AI market valuation in-place without recreating the entire object. Every write calls the Hive box directly and then triggers a synchronous <code>_loadWatches()</code> to re-push state, guaranteeing the UI is always consistent with on-disk data.</span></li>
-              <li><span class="hl-label">Cinematic Showcase Mode</span><span class="hl-desc">A full-screen <code>ShowcaseScreen</code> enters <code>SystemUiMode.immersiveSticky</code> and renders the collection via a <code>PageView</code> with a custom <code>HeavyPageScrollPhysics</code> (mass: 120, stiffness: 80) that mimics the weighted feel of turning a heavy catalog page. Each card computes a real-time parallax offset from <code>_currentPageValue - index</code> that pans the photo horizontally as the card enters the viewport, with an optional film-grain noise overlay composited via <code>BlendMode.softLight</code>.</span></li>
-              <li><span class="hl-label">Service Ledger & Health Alerts</span><span class="hl-desc">The <code>WatchItem</code> model embeds a computed <code>isServiceDue</code> getter that checks whether more than 5 years have elapsed since <code>lastServiced ?? purchaseDate</code>. The analytics screen surfaces a <code>CircularProgressIndicator</code>-based collection-health ring, and the details screen injects an amber warning banner for overdue pieces. The ledger supports attaching receipt photos, comma-separated parts lists, and cost logging — all persisted to the encrypted Hive box via <code>copyWith</code>.</span></li>
-              <li><span class="hl-label">Glassmorphism UI System</span><span class="hl-desc">A reusable <code>GlassContainer</code> widget wraps every card surface with a <code>BackdropFilter</code> (sigma 15) to produce a live-blurred frosted glass effect. It applies a directional <code>LinearGradient</code> (top-left → bottom-right) at 15% / 5% white opacity in dark mode, bordered with a 1.5 pt translucent stroke — building a cohesive premium UI language that extends from the analytics dashboard to the detail and ledger screens.</span></li>
+            <ul class="highlights">
+              <li>Catalog, view, and manage a personal watch collection</li>
+              <li>Built specifically for the watch-collector niche, not a generic inventory app</li>
             </ul>
-            <div class="chips">
-              <span class="chip">Flutter</span><span class="chip">Riverpod</span><span class="chip">Gemini AI</span>
-              <span class="chip">Hive</span><span class="chip">PDF Generation</span>
-              <span class="chip">fl_chart</span><span class="chip">flutter_secure_storage</span>
-            </div>
+            <div class="chips"><span class="chip">Flutter</span><span class="chip">Firebase</span></div>
             <div class="shots">
               <div class="phone">
                 <div class="notch"></div><img src="assets/screenshots/horolux-1.webp" alt="Horolux collection view"
